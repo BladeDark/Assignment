@@ -297,14 +297,14 @@ public class DefinitionSteps {
 		SeatsPage = Passenger.clickNextbtn();
 	}
 
-	@When("^I select any AISLE SEAT avaialbe in departure$")
+	@When("^I select any AISLE SEAT available in departure$")
 	public void i_select_any_AISLE_SEAT_avaialbe_in_departure() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
 		SeatsPage.selectDepartureSeat();
 		Assert.assertTrue(SeatsPage.Departure_CheckSelectedSeat().contains(SeatsPage.departSeatNo));
 	}
 
-	@When("^I select any AISLE SEAT avaialbe in return$")
+	@When("^I select any AISLE SEAT available in return$")
 	public void i_select_any_AISLE_SEAT_avaialbe_in_return() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
 		SeatsPage.selectReturnSeat();

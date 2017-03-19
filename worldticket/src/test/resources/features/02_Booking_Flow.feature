@@ -38,15 +38,15 @@ Feature: Booking flow information must show correctly as selected
     Then I check information in "Return"
     When I click next button on Flight Details Page
 
-  Scenario: When I fill personal infomration, it must show name as I filled in the box
+  Scenario: When I fill personal information, it must show name as I filled in the box
     When I select "Mr." in Title
     And I input "Steve" in First Name
     And I input "Jobs" in Last Name
     Then I click next button on Passenger Page
 
   Scenario: Seat information must show the same as I selected
-    When I select any AISLE SEAT avaialbe in departure
-    And I select any AISLE SEAT avaialbe in return
+    When I select any AISLE SEAT available in departure
+    And I select any AISLE SEAT available in return
     Then I check seat display as selected
     And I click next button on Seats Page
 
