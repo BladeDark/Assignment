@@ -208,7 +208,7 @@ public class Landing_Page extends PageObject {
 		} catch (Exception e) {
 			this.changeMonthRightBorder();
 			element = null;
-			element = find(By
+			element = findAll(By
 					.xpath(".//*[@class='datepicker_container']/div/div/div/div[2]/div/div[*]/div[not(@disabled)]/*[text()='"
 							+ value + "']"));
 			element.get(0).click();
