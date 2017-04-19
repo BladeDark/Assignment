@@ -206,11 +206,11 @@ public class Landing_Page extends PageObject {
 			element.get(0).click();
 
 		} catch (Exception e) {
+			this.changeMonthRightBorder();
 			element = null;
 			element = find(By
 					.xpath(".//*[@class='datepicker_container']/div/div/div/div[2]/div/div[*]/div[not(@disabled)]/*[text()='"
 							+ value + "']"));
-			this.changeMonthRightBorder();
 			element.get(0).click();
 		}
 
