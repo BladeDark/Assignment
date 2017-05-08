@@ -67,5 +67,9 @@ public class Method  {
 	public void jsClick(WebElementFacade element,WebDriver driver) {
 		  ((JavascriptExecutor) driver).executeScript("return arguments[0].click();", element);
 		}
+	
+	public void maximizeBrowser(WebDriver driver){
+		driver.manage().window().maximize();
+	}
 
 }
