@@ -25,7 +25,7 @@ public class SeatsPage extends Passenger {
 		List<WebElement> departureSeat;
 
 		departureSeat = driver.findElements(
-				By.xpath(".//div[@class='booking_fourth_page']/div[1]//*[@class='AISLE_SEAT Y AVAILABLE']/a"));
+				By.xpath(".//*[contains(@id,'fromSEAT')][contains(@class,'AISLE_SEAT Y AVAILABLE')]/a"));
 
 		departureSeat.get(0).click();
 		departSeatNo = departureSeat.get(0).getAttribute("class");
@@ -37,9 +37,13 @@ public class SeatsPage extends Passenger {
 		List<WebElement> returnSeat;
 
 		returnSeat = driver.findElements(
-				By.xpath(".//div[@class='booking_fourth_page']/div[2]//*[@class='AISLE_SEAT Y AVAILABLE']/a"));
-
-		returnSeat.get(0).click();
+				By.xpath(".//*[contains(@id,'toSEAT')][contains(@class,'AISLE_SEAT Y AVAILABLE')]/a"));
+		
+		 wait.until(ExpectedConditions.visibilityOfAllElements(returnSeat));
+		 
+		 this.jsClick(returnSeat.get(0));
+		 
+		//returnSeat.get(0).click();
 		returnSeatNo = returnSeat.get(0).getAttribute("class");
 
 		return PageFactory.initElements(driver, SeatsPage.class);
@@ -50,7 +54,7 @@ public class SeatsPage extends Passenger {
 		WebElement departureSeat;
 
 		departureSeat = wait.until(ExpectedConditions.visibilityOfElementLocated(
-				By.xpath(".//div[@class='booking_fourth_page']/div[1]//*[contains(@class,'SELECTED')]/a")));
+				By.xpath(".//*[contains(@id,'fromSEAT')][contains(@class,'SELECTED')]/a")));
 				
 				
 			
@@ -63,7 +67,7 @@ public class SeatsPage extends Passenger {
 		WebElement returnSeat;
 
 		returnSeat = wait.until(ExpectedConditions.visibilityOfElementLocated(
-				By.xpath(".//div[@class='booking_fourth_page']/div[2]//*[contains(@class,'SELECTED')]/a")));
+				By.xpath(".//*[contains(@id,'toSEAT')][contains(@class,'SELECTED')]/a")));
 				
 			
 
@@ -92,7 +96,10 @@ public class SeatsPage extends Passenger {
 	public String table_Return_Seat() {
 		WebElement seat;
 
-		seat = driver.findElement(By.xpath(".//*[@id='main_flights_wrapper']/div[3]/div[2]/table/tbody/tr/td[2]"));
+		
+		
+		seat = wait.until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath(".//*[@id='main_flights_wrapper']/div[3]/div[2]/table/tbody/tr/td[2]")));
 
 		return seat.getText();
 
@@ -101,8 +108,10 @@ public class SeatsPage extends Passenger {
 	public String MySelection_return_Seat(){
 		WebElement seat;
 
-		seat = driver
-				.findElement(By.xpath(".//*[@id='main_flights_wrapper']/div[2]/div/ul/li/div/div/div[4]/div/div[3]/div[4]/div[4]"));
+		
+		
+		seat = wait.until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath(".//*[@id='main_flights_wrapper']/div[2]/div/ul/li/div/div/div[4]/div/div[3]/div[4]/div[4]")));
 		
 		return seat.getText();
 		
