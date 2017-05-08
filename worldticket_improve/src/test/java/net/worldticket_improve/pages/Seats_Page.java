@@ -7,15 +7,18 @@ import org.openqa.selenium.support.FindAll;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.worldticket_improve.method.Method;
 
 public class Seats_Page extends PageObject{
+	
+	private Method method = new Method();
 	
 	public String departSeatNo;
 	public String returnSeatNo;
 
 	public void selectDepartureSeat() {
 		List<WebElementFacade> departureSeat = findAll(
-				By.xpath(".//div[@class='booking_fourth_page']/div[1]//*[@class='AISLE_SEAT Y AVAILABLE']/a"));
+				By.xpath(".//*[contains(@id,'fromSEAT')][contains(@class,'AISLE_SEAT Y AVAILABLE')]/a"));
 
 		departureSeat.get(0).click();
 		departSeatNo = departureSeat.get(0).getAttribute("class");
@@ -24,10 +27,9 @@ public class Seats_Page extends PageObject{
 	}
 
 	public void selectReturnSeat() {
-		List<WebElementFacade> returnSeat =findAll(By.xpath(".//div[@class='booking_fourth_page']/div[2]//*[@class='AISLE_SEAT Y AVAILABLE']/a"));
+		List<WebElementFacade> returnSeat =findAll(By.xpath(".//*[contains(@id,'toSEAT')][contains(@class,'AISLE_SEAT Y AVAILABLE')]/a"));
 
-		
-		returnSeat.get(0).click();
+		method.jsClick(returnSeat.get(0), super.getDriver());
 		returnSeatNo = returnSeat.get(0).getAttribute("class");
 
 	
@@ -37,7 +39,7 @@ public class Seats_Page extends PageObject{
 
 		WebElementFacade departureSeat;
 
-		departureSeat = find(By.xpath(".//div[@class='booking_fourth_page']/div[1]//*[contains(@class,'SELECTED')]/a"));
+		departureSeat = find(By.xpath(".//*[contains(@id,'fromSEAT')][contains(@class,'SELECTED')]/a"));
 				
 		return departureSeat.getAttribute("class");
 	}
@@ -46,7 +48,7 @@ public class Seats_Page extends PageObject{
 
 		WebElementFacade returnSeat;
 
-		returnSeat = find(By.xpath(".//div[@class='booking_fourth_page']/div[2]//*[contains(@class,'SELECTED')]/a"));
+		returnSeat = find(By.xpath(".//*[contains(@id,'toSEAT')][contains(@class,'SELECTED')]/a"));
 				
 			
 
